@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIRITO -_- 1404 | Curated Inspiration</title>
+    
+    <!-- Import Luxury Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --accent-gold: #c5a059;
+            --text-light: #ffffff;
+            --text-muted: #888888;
+            --live-red: #ff3b30;
+            /* Rolex-style ultra-smooth easing */
+            --rolex-easing: cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, #151515 0%, #050505 80%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Ambient Gold Dust Canvas Background */
+        #luxury-dust {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Royal Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            width: 0%;
+            z-index: 9999;
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.8);
+            transition: width 0.1s ease-out;
+        }
+
+        /* Ambient Parallax Watermark */
+        .background-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80vw;
+            color: rgba(197, 160, 89, 0.03);
+            z-index: -2;
+            pointer-events: none;
+            user-select: none;
+            transition: transform 0.1s linear;
+        }
+
+        .hero, .stats-section, .about, .gallery-section, .more-options, footer {
+            position: relative;
+            z-index: 10;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            animation: slideDown 1.5s var(--rolex-easing) forwards;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 4rem;
+            border-radius: 2px;
+            background: linear-gradient(135deg, rgba(20,20,20,0.2) 0%, rgba(10,10,10,0.5) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+            opacity: 0;
+            animation: textSweep 2s var(--rolex-easing) 0.3s forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: textSweep 2s var(--rolex-easing) 0.6s forwards;
+        }
+
+        .hero-btn-wrapper {
+            opacity: 0;
+            animation: textSweep 2s var(--rolex-easing) 0.9s forwards;
+            display: inline-block;
+        }
+
+        @keyframes textSweep {
+            0% { opacity: 0; transform: translateY(30px); letter-spacing: 10px; filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0); letter-spacing: 2px; filter: blur(0); }
+        }
+
+        /* Buttons */
+        .cta-button {
+            position: relative;
+            display: inline-block;
+            padding: 1.2rem 3.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-light);
+            background-color: transparent;
+            border: 1px solid rgba(197, 160, 89, 0.5);
+            transition: transform 0.4s var(--rolex-easing), background-color 0.4s ease, border-color 0.4s ease;
+            will-change: transform;
+        }
+
+        .cta-button:hover {
+            border-color: var(--accent-gold);
+            background: rgba(197, 160, 89, 0.1);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.2);
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            filter: blur(5px);
+            transition: all 1.5s var(--rolex-easing);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            background: rgba(5, 5, 5, 0.8);
+        }
+
+        .stat-box {
+            display: inline-block;
+            padding: 3rem 6rem;
+            border-radius: 2px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+            background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(197, 160, 89, 0.1), transparent 40%), linear-gradient(180deg, rgba(20,20,20,0.5) 0%, rgba(5,5,5,0.9) 100%);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            transition: border-color 0.3s ease;
+        }
+
+        .stat-box:hover {
+            border-color: rgba(197, 160, 89, 0.3);
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--live-red);
+            border-radius: 50%;
+            animation: pulse-animation 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 59, 48, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
+        }
+
+        .counter {
+            font-size: 5rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 0 30px rgba(197, 160, 89, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* About Section */
+        .about {
+            padding: 10rem 2rem;
+            text-align: center;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            color: var(--accent-gold);
+        }
+
+        .about p {
+            font-size: 1.15rem;
+            color: #b3b3b3;
+            line-height: 2.2;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        /* Curated Gallery Section (Rolex Style Animations) */
+        .gallery-section {
+            padding: 4rem 2rem 6rem;
+        }
+        
+        .gallery-section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+            color: var(--text-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* Very slow, heavy cinematic scale */
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1);
+            filter: brightness(0.7) contrast(1.1);
+            transition: transform 1.8s var(--rolex-easing), filter 1.8s var(--rolex-easing);
+            will-change: transform, filter;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1.05) contrast(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 4rem 2rem 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1.2s var(--rolex-easing);
+            z-index: 3;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .gallery-overlay p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        /* More Options Section */
+        .more-options {
+            text-align: center;
+            padding: 4rem 2rem 8rem;
+        }
+
+        .more-options h3 {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem;
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 0.9rem; }
+            .counter { font-size: 3.5rem; }
+            .stat-box { padding: 2rem; }
+            .background-watermark { font-size: 120vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Gold Dust Particles -->
+    <canvas id="luxury-dust"></canvas>
+
+    <!-- Royal Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Parallax Pinterest Logo Watermark -->
+    <div class="background-watermark">
+        <i class="fa-brands fa-pinterest"></i>
+    </div>
+
+    <nav>
+        <a href="#" class="logo">KIRITO -_- 1404</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>KIRITO -_- 1404</h1>
+            <p>Visual Excellence & 4K Aesthetics</p>
+            <div class="hero-btn-wrapper">
+                <a href="https://www.pinterest.com/printergamer563" target="_blank" class="cta-button">View the Archive</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="stats-section reveal">
+        <div class="stat-box">
+            <div class="live-indicator">
+                <span class="pulse-dot"></span> Live
+            </div>
+            <h2 class="counter" data-target="20000">0</h2>
+            <p class="stat-label">Monthly Views</p>
+        </div>
+    </section>
+
+    <section class="about reveal">
+        <div class="about-container">
+            <h2>The Curator's Vision</h2>
+            <p>Welcome to the visual archives of KIRITO -_- 1404. This curated space is dedicated to the pursuit of high-fidelity 4K and 8K digital artistry. Here, the cinematic allure of 1980s retro aesthetics seamlessly meets the precision of modern engineering.</p>
+            <p>Every graphic, wallpaper, and edit is meticulously selected and optimized. The collection spans across immersive multi-screen visual setups, sprawling, moody cityscapes of Los Angeles and London, the sleek automotive lines of vehicles like the classic white BMW M4, and the highly technical, complex beauty of commercial aviation flight decks.</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2 class="reveal">Featured Aesthetics</h2>
+        <div class="gallery-grid">
+            
+            <!-- Image 1: Provided Urban Image -->
+            <div class="gallery-item reveal">
+                <img src="Gemini_Generated_Image_setbxjsetbxjsetb.png" alt="Historic Station and Tram">
+                <div class="gallery-overlay">
+                    <h3>Urban Architecture</h3>
+                    <p>Historic transit hubs and vibrant city life.</p>
+                </div>
+            </div>
+
+            <!-- Image 2: Provided Feline Image -->
+            <div class="gallery-item reveal">
+                <img src="Gemini_Generated_Image_rl1ebcrl1ebcrl1e.png" alt="Two Kittens on a Ledge">
+                <div class="gallery-overlay">
+                    <h3>Feline Aesthetics</h3>
+                    <p>Vibrant nature and charming perspectives.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- More Options to Pinterest -->
+    <section class="more-options reveal">
+        <h3>Discover the Full Gallery</h3>
+        <a href="https://www.pinterest.com/printergamer563" target="_blank" class="cta-button">Open Pinterest Homepage</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 KIRITO -_- 1404. Elevating digital aesthetics.</p>
+    </footer>
+
+    <!-- Expert JavaScript Engine with Mobile Touch Optimizations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // Touch Device Detector to optimize mobile performance
+            const isTouchDevice = () => {
+                return (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+            };
+            const touch = isTouchDevice();
+
+            // 1. Particle Canvas Engine (Optimized for Mobile)
+            const canvas = document.getElementById('luxury-dust');
+            const ctx = canvas.getContext('2d');
+            let particlesArray;
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                initParticles();
+            });
+
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color) {
+                    this.x = x; this.y = y;
+                    this.directionX = directionX; this.directionY = directionY;
+                    this.size = size; this.color = color;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                    if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                // Reduce particle count significantly if running on a phone/tablet
+                const density = touch ? 25000 : 12000;
+                const numberOfParticles = (canvas.height * canvas.width) / density;
+                
+                for (let i = 0; i < numberOfParticles; i++) {
+                    const size = (Math.random() * 2) + 0.5;
+                    const x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                    const y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                    const directionX = (Math.random() * 0.3) - 0.15;
+                    const directionY = (Math.random() * 0.3) - 0.15;
+                    const color = `rgba(197, 160, 89, ${Math.random() * 0.4 + 0.1})`;
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+                }
+            }
+
+            function animateParticles() {
+                requestAnimationFrame(animateParticles);
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+            }
+            initParticles();
+            animateParticles();
+
+            // 2. Scroll Progress & Parallax Watermark
+            const watermark = document.querySelector('.background-watermark');
+            const progressBar = document.querySelector('.scroll-progress');
+
+            window.addEventListener('scroll', () => {
+                const scrollPx = document.documentElement.scrollTop;
+                const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                
+                progressBar.style.width = `${(scrollPx / winHeightPx) * 100}%`;
+                watermark.style.transform = `translate(-50%, calc(-50% - ${scrollPx * 0.15}px)) scale(${1 + scrollPx * 0.0003})`;
+            });
+
+            // 3. Magnetic CTA Buttons (Disabled on Touch Devices to prevent scroll lag)
+            if (!touch) {
+                const magneticBtns = document.querySelectorAll('.cta-button');
+                magneticBtns.forEach(btn => {
+                    btn.addEventListener('mousemove', (e) => {
+                        const rect = btn.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
+                    });
+                    btn.addEventListener('mouseleave', () => {
+                        btn.style.transform = `translate(0px, 0px)`;
+                    });
+                });
+            }
+
+            // 4. Dynamic Spotlight Glow on Stat Box (Disabled on Touch Devices)
+            if (!touch) {
+                const statBox = document.querySelector('.stat-box');
+                statBox.addEventListener('mousemove', (e) => {
+                    const rect = statBox.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    statBox.style.setProperty('--mouse-x', `${x}px`);
+                    statBox.style.setProperty('--mouse-y', `${y}px`);
+                });
+            }
+
+            // 5. Scroll Reveal & Number Counter
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+
+            const animateCounter = (element) => {
+                const target = +element.getAttribute('data-target');
+                const duration = 2500;
+                const start = 0;
+                let startTimestamp = null;
+
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                    
+                    const currentNumber = Math.floor(easeOutQuart * (target - start) + start);
+                    element.innerHTML = currentNumber.toLocaleString() + "+";
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        element.innerHTML = target.toLocaleString() + "+";
+                    }
+                };
+                window.requestAnimationFrame(step);
+            };
+
+            const fetchLiveViewsAndAnimate = async (element) => {
+                try {
+                    const response = await fetch('http://127.0.0.1:5000/api/views');
+                    const data = await response.json();
+                    if (data.success && data.views) element.setAttribute('data-target', data.views);
+                } catch (error) {
+                    console.log("Using luxury fallback counter.");
+                }
+                animateCounter(element);
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        
+                        const counter = entry.target.querySelector('.counter');
+                        if (counter && !counter.classList.contains('counted')) {
+                            counter.classList.add('counted');
+                            fetchLiveViewsAndAnimate(counter);
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            let delay = 0;
+            
+            revealElements.forEach((el) => {
+                if (el.classList.contains('gallery-item')) {
+                    el.style.transitionDelay = `${delay}s`;
+                    // Staggers slightly faster on phones where images stack vertically
+                    delay += touch ? 0.05 : 0.15; 
+                }
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
